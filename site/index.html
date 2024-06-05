@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Request Viewer</title>
+</head>
+<body>
+    <h1>HTTP Request Viewer</h1>
+    <pre id="request-info"></pre>
+
+    <script>
+        // Function to display HTTP request information in JSON format
+        function displayRequestInfo() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const requestData = {};
+            for (const [key, value] of urlParams) {
+                requestData[key] = value;
+            }
+            const requestJson = JSON.stringify(requestData, null, 2);
+            document.getElementById('request-info').textContent = requestJson;
+        }
+
+        // Call function to display request info when the page loads
+        window.onload = displayRequestInfo;
+    </script>
+</body>
+</html>
+
